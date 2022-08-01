@@ -7,14 +7,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import mockData from "../Data/mockData.json";
+import Searchcomp from '../Components/Searchcomp';
 
 function Home() {
     const prevRef = React.useRef(null);
     const nextRef = React.useRef(null);
     const [JsonData, setJsonData] = useState([]);
-
-    function getData() {
-    }
+    const [updateState, setUpdateState] = useState(false);
+    const [searchQuery, setSearchQuery] = useState("");
 
     function Jsonformat(){
         mockData.data.map(data => {
@@ -42,10 +42,24 @@ function Home() {
             });
         });
     }
-
+    const Search = (data) => {
+        console.log("asdasdada",data);
+        if(searchQuery == "") {
+            return data
+        }
+        else {
+            return data.filter(
+                (item) => 
+                item.Name.toLowerCase().includes(searchQuery) ||
+                item.Company.toLowerCase().includes(searchQuery) ||
+                item.Email.toLowerCase().includes(searchQuery) 
+            )
+        }
+        
+    }
     useEffect(()=> {
         Jsonformat();
-        getData();
+        setUpdateState(!updateState);
     },[])
 
   return (
@@ -77,7 +91,7 @@ function Home() {
                 <div className="search-input-cover">
                     <div className="search-input">
                         <i className="ri-search-line"></i>
-                        <input  type="text"  />
+                        <input  type="text"  onChange={(e) => {setSearchQuery(e.target.value)}} />
                     </div>
                     <a href="#">Search</a>
                 </div>
@@ -86,35 +100,12 @@ function Home() {
         <section className="search-result-section">
             <div className="container">
                 <div className="search-result-wrapper">
-                    <div className="search-result-cover">
-                        <div className="search-result">
-                            <i className="ri-map-pin-line"></i>
-                            <div>
-                                <h6>Lorem ipsum dolor sit amet.</h6>
-                                <p> Lorem ipsum dolor sit amet.</p>
-                                <hr/>
-                            </div>
-                        </div>
-                        <div className="search-result">
-                            <i className="ri-map-pin-line"></i>
-                            <div>
-                                <h6>Lorem ipsum dolor sit amet.</h6>
-                                <p> Lorem ipsum dolor sit amet.</p>
-                                <hr/>
-                            </div>
-                        </div>
-                        <div className="search-result">
-                            <i className="ri-map-pin-line"></i>
-                            <div>
-                                <h6>Lorem ipsum dolor sit amet.</h6>
-                                <p> Lorem ipsum dolor sit amet.</p>
-                                <hr/>
-                            </div>
-                        </div>
+                        {searchQuery == "" ? null : (<div className="search-result-cover">
+                        <Searchcomp data={Search(JsonData)} />
                         <div className="search-result-more">
                             <a href="#">Show more...</a>
                         </div>
-                    </div>
+                    </div>) }
                 </div>
             </div>
         </section>
