@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import Logo from "../Assets/img/logo.jpg";
 import SliderImg from "../Assets/img/slider.png";
 import FooterImg from "../Assets/img/footer.png";
@@ -6,11 +6,47 @@ import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import mockData from "../Data/mockData.json";
 
 function Home() {
     const prevRef = React.useRef(null);
     const nextRef = React.useRef(null);
+    const [JsonData, setJsonData] = useState([]);
 
+    function getData() {
+    }
+
+    function Jsonformat(){
+        mockData.data.map(data => {
+            var Name = data[0];
+            var Company = data[1];
+            var Email = data[2];
+            var Date = data[3];
+            var Country = data[4];
+            var City = data[5];
+            var newData = [
+                 Name,
+                 Company,
+                 Email,
+                 Date,
+                 Country,
+                 City,
+            ];
+             JsonData.push({
+                 Name,
+                 Company,
+                 Email,
+                 Date,
+                 Country,
+                 City,
+            });
+        });
+    }
+
+    useEffect(()=> {
+        Jsonformat();
+        getData();
+    },[])
 
   return (
     <>
