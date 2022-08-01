@@ -2,7 +2,7 @@ import React from 'react'
 
 function Searchcomp({data}) {
   return (
-    <div>
+    <div className="search-result-cover">
         {
             data.map((item,index)=> {
                 return (
@@ -17,6 +17,9 @@ function Searchcomp({data}) {
                 )
             })
         }
+        { data.length > 3 ? (<div className="search-result-more">
+            <a href="#">Show more...</a>
+        </div>) : null  }
     </div>
   )
 }

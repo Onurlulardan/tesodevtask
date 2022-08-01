@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react';
+import React, {useState,useEffect,memo } from 'react';
 import Logo from "../Assets/img/logo.jpg";
 import SliderImg from "../Assets/img/slider.png";
 import FooterImg from "../Assets/img/footer.png";
@@ -43,7 +43,6 @@ function Home() {
         });
     }
     const Search = (data) => {
-        console.log("asdasdada",data);
         if(searchQuery == "") {
             return data
         }
@@ -57,6 +56,7 @@ function Home() {
         }
         
     }
+
     useEffect(()=> {
         Jsonformat();
         setUpdateState(!updateState);
@@ -99,14 +99,10 @@ function Home() {
         </section>
         <section className="search-result-section">
             <div className="container">
-                <div className="search-result-wrapper">
-                        {searchQuery == "" ? null : (<div className="search-result-cover">
+                {searchQuery == "" ? null : (<div className="search-result-wrapper">
                         <Searchcomp data={Search(JsonData)} />
-                        <div className="search-result-more">
-                            <a href="#">Show more...</a>
-                        </div>
-                    </div>) }
-                </div>
+                        
+                </div>) }
             </div>
         </section>
         <section className="slider-section">
@@ -211,4 +207,4 @@ function Home() {
   )
 }
 
-export default Home
+export default memo(Home)

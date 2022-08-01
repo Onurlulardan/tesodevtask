@@ -164,6 +164,8 @@ a {
   display: flex;
   align-items: center;
 }
+
+
 .search-result > i {
   font-size: 24px;
   color: var(--Siyah);
