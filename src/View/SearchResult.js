@@ -125,7 +125,9 @@ function SearchResult() {
             
         </div>
     </section>
-    <Pagination itemPerPage={itemPerPage} totalItem={paginationNumber} paginate={paginate}></Pagination>
+    <section>
+        <Pagination itemPerPage={itemPerPage} totalItem={paginationNumber} paginate={paginate}></Pagination>
+    </section>
     </div>
   )
 }
