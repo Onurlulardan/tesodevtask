@@ -1,4 +1,4 @@
-import React, {useState,useEffect,memo } from 'react';
+import React, {useState,useEffect,memo, useRef  } from 'react';
 import Logo from "../Assets/img/logo.jpg";
 import SliderImg from "../Assets/img/slider.png";
 import FooterImg from "../Assets/img/footer.png";
@@ -8,10 +8,12 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import mockData from "../Data/mockData.json";
 import Searchcomp from '../Components/Searchcomp';
+import {Link} from "react-router-dom";
+import SearchResult from './SearchResult';
 
 function Home() {
-    const prevRef = React.useRef(null);
-    const nextRef = React.useRef(null);
+    const prevRef = useRef(null);
+    const nextRef = useRef(null);
     const [JsonData, setJsonData] = useState([]);
     const [updateState, setUpdateState] = useState(false);
     const [searchQuery, setSearchQuery] = useState("");
@@ -42,7 +44,7 @@ function Home() {
             });
         });
     }
-    const Search = (data) => {
+    function Search(data) {
         if(searchQuery == "") {
             return data
         }
@@ -52,9 +54,8 @@ function Home() {
                 item.Name.toLowerCase().includes(searchQuery) ||
                 item.Company.toLowerCase().includes(searchQuery) ||
                 item.Email.toLowerCase().includes(searchQuery) 
-            )
-        }
-        
+                )
+            }
     }
 
     useEffect(()=> {
@@ -93,7 +94,7 @@ function Home() {
                         <i className="ri-search-line"></i>
                         <input  type="text"  onChange={(e) => {setSearchQuery(e.target.value)}} />
                     </div>
-                    <a href="#">Search</a>
+                    <Link to={'/SearchResult'}>Search</Link>
                 </div>
             </div>
         </section>

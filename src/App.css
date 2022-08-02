@@ -363,7 +363,7 @@ a {
   align-items: center;
   justify-content: space-between;
 }
-.show-more-header-cover > div > img {
+.show-more-header-cover > div > a > img {
   width: 150px;
   height: 60px;
   margin-right: 35px;
@@ -446,6 +446,9 @@ a {
   font-size: 18px;
   font-family: var(--Roboto);
   font-weight: 500;
+  display: flex;
+  line-height: 30px;
+  justify-content: center;
 }
 .order-btn:hover {
   
@@ -500,17 +503,45 @@ a {
   align-items: center;
   justify-content: space-between;
   height: 80px;
+  border-radius: 8px;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 15px;
+    padding-bottom: 30px;
+}
+.item-content::before {
+  content : "";
+  position: absolute;
+  left    : 0;
+  bottom  : 0;
+  height  : 1px;
+  width   : 100%; 
+  border-bottom: 1px solid var(--Gri);
+}
+.item-list-cover > .item-content:last-child::before {
+  border-bottom: none;
+}
+.item-content:hover {
+  background: rgb(79,117,194,0.2);
+/* background: linear-gradient(90deg, rgba(79,117,194,1) 0%, rgba(79,117,194,0.22172619047619047) 100%); */
 }
 .item-content-left {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
+.item-content-right {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
 .item-content-left > i {
   font-size: 24px;
   color: var(--Siyah);
   margin-right: 15px;
   margin-bottom: 16px;
+  padding-top: 10px;
 }
 .item-content-left >  div > h6 {
   font-family: var(--Inter);
@@ -518,7 +549,7 @@ a {
   color: var(--Siyah);
   font-size: 16px;
   line-height: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .item-content-left > div > p {
   font-family: var(--Inter);
@@ -529,14 +560,15 @@ a {
 }
 .item-content-right > h6 {
   font-size: 16px;
-  font-weight: 400px;
+  font-weight: 400;
   color: var(--Gri);
   line-height: 20px;
   font-family: var(--Inter);
+  margin-bottom: 10px;
 }
 .item-content-right p {
   font-size: 16px;
-  font-weight: 500px;
+  font-weight: 500;
   color: var(--Gri);
   line-height: 16px;
   font-family: var(--Inter);

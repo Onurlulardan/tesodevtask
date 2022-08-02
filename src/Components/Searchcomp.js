@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { Link } from "react-router-dom";
+import { MainContext, useContext } from "../Context.js";
 
 function Searchcomp({data}) {
+    const { filteredData, setFilteredData} = useContext(MainContext);
+    useEffect(()=>{
+        setFilteredData(data);
+    },[data]);
+
+
   return (
     <div className="search-result-cover">
         {
-            data.map((item,index)=> {
+            data.slice(0, 3).map((item,index)=> {
                 return (
                     <div key={index} className="search-result">
                     <i className="ri-map-pin-line"></i>
@@ -18,7 +26,7 @@ function Searchcomp({data}) {
             })
         }
         { data.length > 3 ? (<div className="search-result-more">
-            <a href="#">Show more...</a>
+            <Link to={`/SearchResult`}>Show more...</Link>
         </div>) : null  }
     </div>
   )
