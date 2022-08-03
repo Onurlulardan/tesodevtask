@@ -1,22 +1,25 @@
 import React, {useEffect, useState} from 'react'
 import Logo from '../Assets/img/logo.jpg';
-import {Link } from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 import Home from './Home';
 import {MainContext,useContext} from "../Context.js";
 import Pagination from '../Components/Pagination.js';
+import Record from './Record';
 
 
-function SearchResult() {
+function SearchResult({location}) {
     const { filteredData} = useContext(MainContext);
     const [newData, setNewData] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [updateState, setUpdateState] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [itemPerPage, setItemPerPage] = useState(6);
+    const params = useParams();
 
 
     useEffect(()=>{
         setNewData(filteredData);
+        setSearchQuery(params.searchkey);
     },[filteredData]);
 
     const paginationNumber = newData.length / 6;
@@ -71,10 +74,10 @@ function SearchResult() {
                 <Link to={'/'}>
                     <img src={Logo} alt="logo" />
                 </Link>
-                <input className="search-inp" type="text" onChange={(e) => {setSearchQuery(e.target.value)}} />
+                <input className="search-inp" type="text" value={searchQuery}  onChange={(e) => {setSearchQuery(e.target.value)}} />
                 <a onClick={(e) => {Search()}} href={void(0)} className="search-btn">Search</a>
             </div>
-            <a href="#" className="add-btn">Add new record</a>
+            <Link to={'/Record'} className="add-btn">Add new record</Link>
         </div>
     </div>
     </section>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { MainContext, useContext } from "../Context.js";
 
-function Searchcomp({data}) {
+function Searchcomp({data,searchQuery}) {
     const { filteredData, setFilteredData} = useContext(MainContext);
     useEffect(()=>{
         setFilteredData(data);
@@ -26,7 +26,7 @@ function Searchcomp({data}) {
             })
         }
         { data.length > 3 ? (<div className="search-result-more">
-            <Link to={`/SearchResult`}>Show more...</Link>
+            <Link to={`/SearchResult/${searchQuery}`}>Show more...</Link>
         </div>) : null  }
     </div>
   )

@@ -10,6 +10,8 @@ import mockData from "../Data/mockData.json";
 import Searchcomp from '../Components/Searchcomp';
 import {Link} from "react-router-dom";
 import SearchResult from './SearchResult';
+import Record from './Record';
+
 
 function Home() {
     const prevRef = useRef(null);
@@ -68,7 +70,7 @@ function Home() {
         <section className="header-section">
         <div className="container">
             <div className="header-btn-cover">
-                <a href="#" className="header-btn">Add new record</a>
+                <Link to={'/Record'} className="header-btn">Add new record</Link>
             </div>
         </div>
         </section>
@@ -94,14 +96,14 @@ function Home() {
                         <i className="ri-search-line"></i>
                         <input  type="text"  onChange={(e) => {setSearchQuery(e.target.value)}} />
                     </div>
-                    <Link to={'/SearchResult'}>Search</Link>
+                    <Link to={`/SearchResult/${searchQuery}`}>Search</Link>
                 </div>
             </div>
         </section>
         <section className="search-result-section">
             <div className="container">
                 {searchQuery == "" ? null : (<div className="search-result-wrapper">
-                        <Searchcomp data={Search(JsonData)} />
+                        <Searchcomp searchQuery={searchQuery} data={Search(JsonData)} />
                         
                 </div>) }
             </div>
