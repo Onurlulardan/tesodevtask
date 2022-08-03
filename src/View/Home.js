@@ -127,6 +127,17 @@ function Home() {
                         delay: 3000,
                         disableOnInteraction: false
                     }}
+                    breakpoints={{
+                        640: {
+                          slidesPerView: 1,
+                        },
+                        768: {
+                          slidesPerView: 3,
+                        },
+                        1440: {
+                            slidesPerView: 4,
+                          },
+                      }}
                     >
                     <SwiperSlide>
                         <div className="slide-cover">
