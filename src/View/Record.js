@@ -135,22 +135,22 @@ function Record() {
                 <form>
                     <div className="form-cover">
                         <div className="form-item">
-                            <p>Name Surname</p>
+                            <p className={formErrors.NameSurname == null ? '' : 'error-p' }>Name Surname</p>
                             <input id="name" name='NameSurname' onChange={handleFormChange} className={formErrors.NameSurname == null ? 'search-inp' : 'error-inp' } type="text" placeholder="Enter name and surname" value={formValues.NameSurname} />
                             <p className='error-p'> {formErrors.NameSurname} </p>
                         </div>
                         <div className="form-item">
-                            <p>Country</p>
+                            <p className={formErrors.NameSurname == null ? '' : 'error-p' }>Country</p>
                             <input id="country" name='Country' onChange={handleFormChange} className={formErrors.Country == null ? 'search-inp' : 'error-inp' } type="text" placeholder="Enter a country" value={formValues.Country} />
                             <p className='error-p'> {formErrors.Country} </p>
                         </div>
                         <div className="form-item">
-                            <p>City</p>
+                            <p className={formErrors.NameSurname == null ? '' : 'error-p' }>City</p>
                             <input id="city" name='City' onChange={handleFormChange} className={formErrors.City == null ? 'search-inp' : 'error-inp' } type="text" placeholder="Enter a city" value={formValues.City} />
                             <p className='error-p'> {formErrors.City} </p>
                         </div>
                         <div className="form-item">
-                            <p>Email</p>
+                            <p className={formErrors.NameSurname == null ? '' : 'error-p' }>Email</p>
                             <input id="mail" name='Email' onChange={handleFormChange} className={formErrors.Email == null ? 'search-inp' : 'error-inp' } type="text" placeholder="Enter a e-mail (abc@xyz.com)" value={formValues.Email} />
                             <p className='error-p'> {formErrors.Email} </p>
                         </div>
