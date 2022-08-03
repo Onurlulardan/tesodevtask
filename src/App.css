@@ -239,20 +239,46 @@ a {
   width: 100%;
   max-width: 1280px;
 }
-.swiper-cover {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  max-width: 1161px;
-  margin: 0px auto;
-}
-.slide-cover {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-}
 
+.swiper-cover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* padding: 0px 120px; */
+  margin: 0px 120px;
+  position: relative;
+}
+.swiper-button-prev, .swiper-button-next {
+  top: 38% !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  background-color: #EEEEEE !important;
+}
+.swiper-button-prev {
+  left: -80px !important;
+}
+.swiper-button-prev::after {
+  font-size: 24px !important;
+  color: #8A8A8A !important;
+}
+.swiper-button-next {
+  right: -50px !important;
+}
+.swiper-button-next::after {
+  font-size: 24px !important;
+  color: #8A8A8A !important;
+}
+.swiper-button-cover {
+  position: absolute;
+  top: 10px;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .slide-content > h1 {
   font-family: var(--Inter);
   font-size: 16px;
@@ -269,32 +295,6 @@ a {
   line-height: 16px;
   width: 330px;
   
-}
-.swiper-button-prev, .swiper-button-next {
-  width: 50px !important;
-  height: 50px !important;
-  border-radius: 50%;
-  background-color: #EEEEEE !important;
-}
-.swiper-button-prev {
-  left: -80px !important;
-}
-.swiper-button-prev::after {
-  font-size: 24px !important;
-  color: #8A8A8A !important;
-}
-.swiper-button-next {
-  right: -40px !important;
-}
-.swiper-button-next::after {
-  font-size: 24px !important;
-  color: #8A8A8A !important;
-}
-.swiper-button-cover {
-  position: absolute;
-  top: -30px;
-  height: 100%;
-  width: 100%;
 }
 /* Footer Section */
 .footer-section > .container-fluid {
@@ -776,10 +776,10 @@ a {
   margin-top: 15px;
 }
 @media screen and (max-width: 1280px) {
-  .swiper-cover {
+  /* .swiper-cover {
       max-width: 1071px;
   }
   .swiper-button-next {
       right: -70px !important;
-  }
+  } */
 }

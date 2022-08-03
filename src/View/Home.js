@@ -2,7 +2,7 @@ import React, {useState,useEffect,memo, useRef  } from 'react';
 import Logo from "../Assets/img/logo.jpg";
 import SliderImg from "../Assets/img/slider.png";
 import FooterImg from "../Assets/img/footer.png";
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import { Navigation, Pagination, Scrollbar, A11y ,Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -113,17 +113,20 @@ function Home() {
                 <div className="slider-header-cover">
                     <h1 className="slider-header">Top News</h1>
                 </div>
-                <div className="swiper-cover">
+                <div className='swiper-cover'>
                     <Swiper
-                    modules={[Navigation]}
-                    spaceBetween={50}
-                    slidesPerView={2.9}
-                    onInit={(swiper) => {
-                        swiper.params.navigation.prevEl = prevRef.current;
-                        swiper.params.navigation.nextEl = nextRef.current;
-                        swiper.navigation.init();
-                        swiper.navigation.update();
-                      }}
+                    modules={[Navigation,Autoplay]}
+                    spaceBetween={0}
+                    slidesPerView={3}
+                    navigation={{
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev'
+                    }}
+                    loop={true}
+                    autoplay={{
+                        delay: 3000,
+                        disableOnInteraction: false
+                    }}
                     >
                     <SwiperSlide>
                         <div className="slide-cover">
@@ -164,25 +167,16 @@ function Home() {
                     <SwiperSlide>
                         <div className="slide-cover">
                             <div className="slide-content">
-                                <img src={SliderImg} alt="slider image"/>
-                                <h1>A Plan to Rebuild the Bus Terminal Everyone Loves to Hate</h1>
-                                <p>1h ago · by Troy Corlson</p>
-                            </div>
-                        </div>
-                    </SwiperSlide>
-                    <SwiperSlide>
-                        <div className="slide-cover">
-                            <div className="slide-content">
-                                <img src={SliderImg} alt="slider image"/>
+                                <img src={SliderImg} alt="slider image" />
                                 <h1>A Plan to Rebuild the Bus Terminal Everyone Loves to Hate</h1>
                                 <p>1h ago · by Troy Corlson</p>
                             </div>
                         </div>
                     </SwiperSlide>
                     </Swiper>
-                     <div className="swiper-button-cover">
-                        <div ref={prevRef}  className="swiper-button-prev"></div>
-                        <div ref={nextRef} className="swiper-button-next"></div>
+                    <div className="swiper-button-cover">
+                        <div className="swiper-button-prev"></div>
+                        <div className="swiper-button-next"></div>
                     </div>
                 </div>
             </div>
